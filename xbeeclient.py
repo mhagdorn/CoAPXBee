@@ -50,7 +50,8 @@ def main():
     client = XBeeHelperClient(xbee, args.node_id)
 
     if args.operation == 'GET':
-        pass
+        response = client.get(args.resource)
+        print((response.pretty_print()))
     elif args.operation == 'OBSERVE':
         pass
     elif args.operation == 'DELETE':
