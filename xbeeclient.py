@@ -45,9 +45,11 @@ def main():
     if args.operation in ['PUT','POST']:
         if args.payload is None:
             parser.error('payload must not be empty for a %s request'%args.operation)
+
+    server = ('127.0.0.1',5683)
             
     xbee = XBeeDevice(args.device,args.baud_rate)
-    client = XBeeHelperClient(xbee, args.node_id)
+    client = XBeeHelperClient(server, xbee, args.node_id)
 
     if args.operation == 'GET':
         response = client.get(args.resource)
